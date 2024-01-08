@@ -14,7 +14,7 @@
 - Content Hashing
 - Code Splitting
 - Differential Bundling - support older browsers
-- Diagnostic]
+- Diagnostic
 - Error Handling
 - HTTPs
 - Tree Shaking - remove unused code
