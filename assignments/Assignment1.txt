@@ -1,0 +1,25 @@
+Q1 What is Emmet? 
+   Emmet allows you to specify class and id attributes for HTML elements using shorthand syntax.
+
+Q2 Difference between library and framework.
+https://www.interviewbit.com/blog/framework-vs-library/
+    
+Q3 WHat is CDN? Why do we use it ?
+https://www.simplilearn.com/content-delivery-network-article
+
+Q4 Why React is known as react?
+https://medium.com/@dhawalpandya/why-is-react-called-react-92f83b10aeac
+
+Q5 What is crossorigin in script tag?
+https://www.geeksforgeeks.org/what-is-the-purpose-of-crossorigin-attribute-in-html/
+
+Q6 What is difference between React and ReactDOM?
+https://medium.com/programming-sage/react-vs-react-dom-a0ed3aea9745
+
+Q7 What is difference between react.development.js and react.production.js files via CDN?
+https://medium.com/react-academy/development-vs-production-the-importance-of-choosing-the-right-cdn-links-d8f8efbe1e5b
+
+Q8 What is async and defer?
+    Async downloads and executes JavaScript as soon as it's available, 
+    while defer attribute waits until the HTML document has been parsed 
+    before downloading and executing any external scripts.
