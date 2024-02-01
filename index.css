@@ -21,17 +21,17 @@
   margin: 10px;
 }
 
-.restaurant-card {
+.res-card {
   margin: 5px;
   width: 200px;
   /* height: 400px; */
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 5px;
 }
 
-.restaurant-card :hover {
+.res-card :hover {
   cursor: pointer;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
 }
 
 .search {
@@ -46,4 +46,8 @@
 .res-logo {
   width: 100%;
   /* padding: 3px;  */
+}
+.filter-btn {
+  margin: 10px;
+  cursor: pointer;
 }
