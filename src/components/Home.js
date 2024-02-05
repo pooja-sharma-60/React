@@ -44,9 +44,9 @@ const Home = () => {
     console.log(searchedRestaurants);
   };
 
-  if (listOfRestaurants === 0) return <Shimmer />;
-
-  return (
+  return listOfRestaurants === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
         <div className="search">
