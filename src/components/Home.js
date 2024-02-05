@@ -2,8 +2,9 @@ import RestaurantCard from "./RestaurantCard";
 // import { restaurantList } from "../utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
-const Body = () => {
+const Home = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -22,9 +23,6 @@ const Body = () => {
         ?.restaurants;
     setListOfRestaurants(restaurantList);
     setFilteredRestaurants(restaurantList);
-    // console.log(
-    //   data.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
-    // );
   };
 
   const handleFilterClick = () => {
@@ -46,9 +44,9 @@ const Body = () => {
     console.log(searchedRestaurants);
   };
 
-  return listOfRestaurants.length === 0 ? (
-    <Shimmer />
-  ) : (
+  if (listOfRestaurants === 0) return <Shimmer />;
+
+  return (
     <div className="body">
       <div className="filter">
         <div className="search">
@@ -68,11 +66,17 @@ const Body = () => {
       </div>
       <div className="restaurant-container">
         {filteredRestaurants.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
   );
 };
 
-export default Body;
+export default Home;
