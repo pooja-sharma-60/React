@@ -1,38 +1,23 @@
-import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { FETCH_MENU_URL } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
   const { resId } = useParams();
-  console.log(resId);
 
-  const fetchMenu = async () => {
-    try {
-      const res = await fetch(FETCH_MENU_URL + resId);
-      const data = await res.json();
-      console.log(data);
-      setResInfo(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const resInfo = useRestaurantMenu(resId);
 
   if (resInfo === null) return <Shimmer />;
 
   const info = resInfo?.data?.cards[0]?.card?.card?.info;
 
-  const itemCards =
+  const cards =
     resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-      ?.card?.itemCards;
+      ?.card;
+      
+  const menuItems = cards?.itemCards || cards?.carousel;
 
-  //   const { cards } = resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR;
-  //   console.log(cards);
-  console.log(itemCards);
+  console.log(menuItems);
 
   return (
     <div className="menu">
@@ -40,11 +25,15 @@ const RestaurantMenu = () => {
       <h3>{info?.cuisines.join(" , ")}</h3>
       <h3>{info?.costForTwoMessage}</h3>
       <h2>Menu</h2>
-      {itemCards &&
-        itemCards.map((menu) => (
-          <ul key={menu?.card?.info?.id}>
+      {menuItems &&
+        menuItems.map((menu) => (
+          <ul key={menu?.dish?.info?.id}>
             <li>
-              {menu?.card?.info?.name} - Rs.{menu?.card?.info?.price / 100}
+              {menu?.card?.info?.name || menu?.dish?.info?.name} - Rs.
+              {menu?.card?.info?.defaultPrice / 100 ||
+                menu?.card?.info?.price / 100 ||
+                menu?.dish?.info?.defaultPrice / 100 ||
+                menu?.dish?.info?.price / 100}
             </li>
           </ul>
         ))}

@@ -5,11 +5,11 @@ class About extends Component {
   constructor(props) {
     super(props);
 
-    console.log("About constructor");
+    // console.log("About constructor");
   }
 
   componentDidMount() {
-    console.log("About component is mounted");
+    // console.log("About component is mounted");
   }
 
   render() {

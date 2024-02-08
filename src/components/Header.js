@@ -1,9 +1,11 @@
 import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
+  const onlineStatus = useOnlineStatus();
 
   const handleClick = () => {
     setBtnName((prev) => (prev === "Login" ? "Logout" : "Login"));
@@ -16,6 +18,7 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
+          <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
           <li>
             <Link to="/" style={{ textDecoration: "none", color: "black" }}>
               Home
@@ -35,6 +38,15 @@ const Header = () => {
               style={{ textDecoration: "none", color: "black" }}
             >
               Contact Us
+            </Link>
+          </li>
+          <li>
+            {" "}
+            <Link
+              to="/grocery"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              Grocery
             </Link>
           </li>
           <li>

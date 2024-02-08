@@ -11,7 +11,7 @@ class UserClass extends React.Component {
       },
     };
 
-    console.log("child Constructor");
+    // console.log("child Constructor");
   }
 
   componentDidMount() {
@@ -26,11 +26,11 @@ class UserClass extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log("component update is called");
+    // console.log("component update is called");
   }
 
   componentWillUnmount() {
-    console.log("component will unmount");
+    // console.log("component will unmount");
   }
 
   render() {
