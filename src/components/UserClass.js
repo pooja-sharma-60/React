@@ -3,35 +3,43 @@ import React from "react";
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      count: 0,
+      userInfo: {
+        login: "pooja",
+        id: "123",
+      },
     };
-    console.log("Constructor");
+
+    console.log("child Constructor");
   }
 
   componentDidMount() {
-    console.log("User component is mounted ");
+    console.log(" child component is mounted ");
+    fetch("https://api.github.com/users/pooja-sharma-60")
+      .then((res) => res.json())
+      .then((data) =>
+        this.setState({
+          userInfo: data,
+        })
+      );
+  }
+
+  componentDidUpdate() {
+    console.log("component update is called");
+  }
+
+  componentWillUnmount() {
+    console.log("component will unmount");
   }
 
   render() {
-    const { name, location } = this.props;
-    const { count } = this.state;
-
-    console.log("render");
+    console.log("child render");
     return (
       <div className="user-card">
-        <h1>Count : {count}</h1>
-        <button
-          onClick={() => {
-            this.setState({
-              count: this.state.count + 1,
-            });
-          }}
-        >
-          Increase Count
-        </button>
-        <h2>Name : {name}</h2>
-        <h3>Location : {location}</h3>
+        <img src={this.state.userInfo.avatar_url} />
+        <h2>Name : {this.state.userInfo.login}</h2>
+        <h3>Id : {this.state.userInfo.id}</h3>
         <h4>Contact : Pooja@gmail.com</h4>
       </div>
     );
