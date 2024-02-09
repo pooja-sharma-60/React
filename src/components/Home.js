@@ -40,24 +40,32 @@ const Home = () => {
   return listOfRestaurants === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter">
-        <div className="search">
+    <div>
+      <div className="flex">
+        <div className="p-4">
           <input
             type="text"
-            className="search-box"
+            className="mr-4 border border-solid border-black rounded-md"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
-          <button onClick={handleSearch}>Search</button>
+          <button
+            className="px-4 py-1 border border-solid border-gray rounded-md hover:bg-gray-100"
+            onClick={handleSearch}
+          >
+            Search
+          </button>
         </div>
-        <button className="filter-btn" onClick={handleFilterClick}>
+        <button
+          className="px-4 m-4 border border-solid border-gray rounded-md hover:bg-gray-100"
+          onClick={handleFilterClick}
+        >
           Top Rated Restaurants
         </button>
       </div>
-      <div className="restaurant-container">
+      <div className="flex flex-wrap">
         {filteredRestaurants.map((restaurant) => (
           <Link
             key={restaurant.info.id}

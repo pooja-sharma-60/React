@@ -14,17 +14,18 @@ const RestaurantMenu = () => {
   const cards =
     resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card;
-      
+
   const menuItems = cards?.itemCards || cards?.carousel;
 
   console.log(menuItems);
 
   return (
-    <div className="menu">
-      <h1>{info?.name}</h1>
+    <div className="m-4 p-4">
+      <h1 className="font-bold text-lg">{info?.name}</h1>
       <h3>{info?.cuisines.join(" , ")}</h3>
       <h3>{info?.costForTwoMessage}</h3>
-      <h2>Menu</h2>
+
+      <h2 className="font-semibold text-lg">Menu</h2>
       {menuItems &&
         menuItems.map((menu) => (
           <ul key={menu?.dish?.info?.id}>

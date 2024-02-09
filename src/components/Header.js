@@ -1,6 +1,6 @@
 import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
@@ -12,12 +12,12 @@ const Header = () => {
     // btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
   };
   return (
-    <div className="header">
-      <div className="logo-container">
-        <img className="logo" src={LOGO_URL} alt="Logo design" />
+    <div className="flex justify-between items-center shadow-lg mb-4">
+      <div className="logo-container bg-none">
+        <img className="w-[100px]" src={LOGO_URL} alt="Logo design" />
       </div>
       <div className="nav-items">
-        <ul>
+        <ul className="flex p-4 m-4 gap-4 ">
           <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
           <li>
             <Link to="/" style={{ textDecoration: "none", color: "black" }}>

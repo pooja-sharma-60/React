@@ -15,8 +15,8 @@ class About extends Component {
   render() {
     console.log(" About render");
     return (
-      <div>
-        <h1>About Us</h1>
+      <div className="m-4 p-4">
+        <h1 className="text-center font-bold text-2xl">User Info</h1>
         <UserClass />
       </div>
     );
