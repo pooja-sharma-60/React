@@ -10,6 +10,8 @@ const Home = () => {
   const [listOfRestaurants, filteredRestaurants, setFilteredRestaurants] =
     useRestaurantData();
 
+  // console.log(listOfRestaurants);
+
   const handleFilterClick = () => {
     let filteredList = listOfRestaurants.filter(
       (restaurant) => restaurant?.info?.avgRating > 4
