@@ -1,6 +1,14 @@
+import { useDispatch } from "react-redux";
 import { IMG_CDN_URL } from "../utils/constants";
+import { addItem } from "../utils/CartSlice";
 
 const MenuItemList = ({ items }) => {
+  const dispatch = useDispatch();
+
+  const handleAddClick = (item) => {
+    dispatch(addItem(item));
+  };
+
   return (
     <div>
       {items.map((item) => (
@@ -23,11 +31,14 @@ const MenuItemList = ({ items }) => {
           </div>
           <div className="p-2 w-3/12 rounded-xl">
             {/* try to make button position fixed with respect to image */}
-            {/* <div className="absolute">
-              <button className="bg-white  shadow-lg rounded-lg py-2 px-10 mx-2 my-16 ">
+            <div className="absolute">
+              <button
+                className="bg-white  shadow-lg rounded-lg  mx-2 px-4 "
+                onClick={() => handleAddClick(item)}
+              >
                 Add
               </button>
-            </div> */}
+            </div>
             <img
               src={
                 item?.card?.info?.imageId &&

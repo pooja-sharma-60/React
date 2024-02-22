@@ -2,10 +2,14 @@ import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   const onlineStatus = useOnlineStatus();
+
+  const cartItems = useSelector((state) => state.cart.items);
+  console.log(cartItems);
 
   const handleClick = () => {
     setBtnName((prev) => (prev === "Login" ? "Logout" : "Login"));
@@ -51,7 +55,7 @@ const Header = () => {
           </li>
           <li>
             <Link to="/cart" style={{ textDecoration: "none", color: "black" }}>
-              Cart
+              Cart - {cartItems.length}
             </Link>
           </li>
           <button className="login-btn" onClick={handleClick}>

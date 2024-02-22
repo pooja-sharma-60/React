@@ -8,6 +8,8 @@ import Error from "./components/Error";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Cart from "./components/Cart";
 import RestaurantMenu from "./components/RestaurantMenu";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 
 // chunking
 // code splitting
@@ -19,10 +21,12 @@ const Grocery = lazy(() => import("./components/Grocery"));
 
 const App = () => {
   return (
+    <Provider store={store}>
     <div className="app">
       <Header />
       <Outlet />
     </div>
+    </Provider>
   );
 };
 
