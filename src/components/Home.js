@@ -22,13 +22,15 @@ const Home = () => {
 
   const handleSearch = () => {
     console.log(searchText);
-    const searchedRestaurants = listOfRestaurants.filter((restaurant) =>
-      restaurant?.info?.name.toLowerCase().includes(searchText.toLowerCase())
-    );
+    const searchedRestaurants =
+      listOfRestaurants &&
+      listOfRestaurants.filter((restaurant) =>
+        restaurant?.info?.name.toLowerCase().includes(searchText.toLowerCase())
+      );
     setFilteredRestaurants(searchedRestaurants);
     setSearchText("");
 
-    console.log(searchedRestaurants);
+    // console.log(searchedRestaurants);
   };
 
   const onlineStatus = useOnlineStatus();
@@ -47,6 +49,7 @@ const Home = () => {
         <div className="p-4">
           <input
             type="text"
+            data-testid="searchInput"
             className="mr-4 border border-solid border-black rounded-md"
             value={searchText}
             onChange={(e) => {
@@ -68,15 +71,16 @@ const Home = () => {
         </button>
       </div>
       <div className="flex flex-wrap">
-        {filteredRestaurants.map((restaurant) => (
-          <Link
-            key={restaurant.info.id}
-            to={"/restaurants/" + restaurant.info.id}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <RestaurantCard resData={restaurant} />
-          </Link>
-        ))}
+        {filteredRestaurants &&
+          filteredRestaurants.map((restaurant) => (
+            <Link
+              key={restaurant.info.id}
+              to={"/restaurants/" + restaurant.info.id}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <RestaurantCard resData={restaurant?.info} />
+            </Link>
+          ))}
       </div>
     </div>
   );

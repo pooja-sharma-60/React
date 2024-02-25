@@ -9,12 +9,13 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   const cartItems = useSelector((state) => state.cart.items);
-  console.log(cartItems);
+  // console.log(cartItems);
 
   const handleClick = () => {
     setBtnName((prev) => (prev === "Login" ? "Logout" : "Login"));
     // btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
   };
+
   return (
     <div className="flex justify-between items-center shadow-lg mb-4">
       <div className="logo-container bg-none">
